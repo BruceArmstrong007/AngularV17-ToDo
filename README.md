@@ -7,6 +7,7 @@ Tried out todo list in drag and drop lists with different methods \
 2.) Todo list with Signals \
 3.) Todo list with Reactive form arrays \
 Tried out @defer (lazy loading component in template) \
+Tried out new control flow (new syntax for conditional statements in template) \
  \
 Features: \
 1.) there are 2 lists (todo, done) \
