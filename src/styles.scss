@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.container {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.font-xl {
+    font-size: xx-large;
+}
+
+.center {
+    justify-content: center;
+}
+
+.evenly {
+    justify-content: space-evenly;
+}
+
+.p-10 {
+    padding: 10px;
+}
+
+.card {
+    width: 100%;
+    height: auto;
+}
+
+.around {
+    justify-content: space-around;
+}
+
+.between {
+    justify-content: space-between;
+}

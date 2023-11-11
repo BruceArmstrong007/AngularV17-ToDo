@@ -1,0 +1,77 @@
+<div class="container center">
+  <div class="font-xl p-10">To Do list</div>
+</div>
+<div class="container center">
+  @defer {
+  <app-input-card (outputEvent)="addTask($event)" />
+  } @placeholder (minimum 500ms) {
+  <app-card-skeleton />
+  }
+</div>
+<div class="container center">
+  <sub class="p-10">Drag and drop to move between todo and done lists</sub>
+</div>
+<div [formGroup]="todoForm" class="container evenly" cdkDropListGroup>
+  @defer {
+  <mat-card class="card" formArrayName="todo">
+    <mat-card-header>
+      <mat-card-title>To do</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list
+        cdkDropList
+        [cdkDropListData]="todoArray.value"
+        (cdkDropListDropped)="drop($event, 'todo')"
+      >
+        @for (item of todoArray.value; track item; let idx = $index) {
+        <mat-list-item cdkDrag>
+          <div class="container between">
+            <p>
+              {{ item }}
+            </p>
+            <button mat-button (click)="removeTask(idx)">
+              <mat-icon>remove</mat-icon>
+            </button>
+          </div>
+        </mat-list-item>
+        } @empty {
+        <div class="container center"><mat-icon> list </mat-icon> Empty</div>
+        }
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+  } @placeholder (minimum 500ms) {
+  <app-card-skeleton />
+  } 
+  @defer {
+  <mat-card class="card" formArrayName="done">
+    <mat-card-header>
+      <mat-card-title>Done</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list
+        cdkDropList
+        [cdkDropListData]="doneArray.value"
+        (cdkDropListDropped)="drop($event, 'done')"
+      >
+        @for (item of doneArray.value; track item; let idx = $index) {
+        <mat-list-item cdkDrag>
+          <div class="container between">
+            <p>
+              {{ item }}
+            </p>
+            <button mat-button (click)="removeDone(idx)">
+              <mat-icon>remove</mat-icon>
+            </button>
+          </div>
+        </mat-list-item>
+        } @empty {
+        <div class="container center"><mat-icon> list </mat-icon> Empty</div>
+        }
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+  } @placeholder (minimum 500ms) {
+  <app-card-skeleton />
+  }
+</div>
